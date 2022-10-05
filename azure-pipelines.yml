@@ -1,16 +1,5 @@
 # Starter pipeline
-- task: DownloadFileshareArtifacts@1
-  inputs:
-    filesharePath: 'https://download.gnome.org/sources/gtk/4.8/'
-    artifactName: 'gtk-4.8.1.tar.xz'
-    itemPattern: 'gtk-4.8.1.tar.xz'
-    downloadPath: '$(System.ArtifactsDirectory)'
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'gtk-4.8.1.tar.xz'
-    destinationFolder: 'gtk'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: false
+
 
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
@@ -23,6 +12,19 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: DownloadFileshareArtifacts@1
+  inputs:
+    filesharePath: 'https://download.gnome.org/sources/gtk/4.8/'
+    artifactName: 'gtk-4.8.1.tar.xz'
+    itemPattern: 'gtk-4.8.1.tar.xz'
+    downloadPath: '$(System.ArtifactsDirectory)'
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: 'gtk-4.8.1.tar.xz'
+    destinationFolder: 'gtk'
+    cleanDestinationFolder: true
+    overwriteExistingFiles: false
+    
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
