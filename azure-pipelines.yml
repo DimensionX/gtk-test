@@ -11,20 +11,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: DownloadFileshareArtifacts@1
-  inputs:
-    filesharePath: 'https://download.gnome.org/sources/gtk/4.8/'
-    artifactName: 'gtk-4.8.1.tar.xz'
-    itemPattern: 'gtk-4.8.1.tar.xz'
-    downloadPath: '$(System.ArtifactsDirectory)'
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'gtk-4.8.1.tar.xz'
-    destinationFolder: 'gtk'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: false
-    
+steps:    
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
